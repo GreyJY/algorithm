@@ -1,0 +1,52 @@
+字符串方法
+s.length(); //长度
+s.substring(1,4);//获取下标1到3
+equals方法
+indexOf("ll")//查找位置
+contains方法//
+toCharArray();//方法，转换为字符数值方法
+注意：String s="abc";
+s=s+"d"-->拼接，但是创建了一个新字符串"abcd",字符串双引，字符单引
+
+字符操作
+char c ='7';
+int x =c-'0'//7
+int x=7;
+char c=(char)('0'+x)//'7'
+Character.is Lettter(c);判断字符
+              Digit(c);是否是数字字符
+
+字符串和字符的一些杂乱操作：String s ="hello";
+char [] chars = s.toCharArray();
+chars[0]='H'
+String result =new String(chars);//Hello
+
+对象方法
+static class Edge{
+int to;
+int weight;
+Edge(int to,int weight){
+this.to=to;
+this.weight=weight;
+}
+}
+
+字符串输出问题：System.out.println(nums)-->输出哈希存值，jvm随便派发的
+应该sout(Arrays.toString(nums));-->这也是跟字符串数组有关系
+而String字符串数组对象官方已经帮忙重写了，所以不需要再用toString()方法
+而自己写的class Peson(){
+                     |
+                     V
+该方法需要自己重写，因为默认是Object，所以需要重写Override
+              
+}
+Array.sort()-->操作数组
+ Collection.sort(list)升序-->操作集合
+ reverse(list);翻转
+list.add(10);末尾添加
+
+
+
+
+
+
