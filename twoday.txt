@@ -1,1 +1,52 @@
+ArrayList自动数组容器
+推荐接口写法List<数据类型>list = new ArrayList<>();--->菱形表达式，容器通用写法
+List<int []>[] g =new ArrayList[n+1];-->这样写是数组列表数组的三层形式而右边对象的中括号是数组对象的写法，这个有个需要注意的点就是只是创造了g数组的本身，而里面的列表对象需要一个一个new，不然g[i]的i会是一个空指针null状态，用add方法就会报错
+
+list方法合集
+list.add(10);末尾添加元素
+get方法获取元素
+set方法修改元素
+remove移除元素
+size元素数量
+contains是否包含元素
+isEmpty是否为空元素
+clear清空元素
+
+HashMap
+HashMap<key,value>map=new HashMap<>();
+map.put("apple",5);会覆盖对应的key所对应的value
+get("apple");//5-->获取对应的value值
+map.getOrDefault("Orange",0);-->key存在跳出对应value，key没有就返回0
+containKey方法是否包含key
+keySet()获取所有Key
+values方法是获取所有Key
+entrySet是获取所有完整键值对
+count.put(x,cout.getOrDefault(x,0)+1)--->这个写法是可以帮助获得每个键的出现次数
+
+HashSet-->用于保存不重复元素，放入元素是随机次序的，即使你挨个遍历也是(用LinkedHashset可以，treeset更好用，包括其中排好序)
+
+ArrayDeque-->可以当队列或者栈使用
+ArrayDeque<Integer>deque = new ArrayDeque<>();
+当队列使用时deque。offer(10);(先进先出)
+int x =deque.pollFirst//10
+等价写法offer加poll写法(poll是取队头而offer就是类似数组的加入方式)
+当栈使用用push方法和pop方法，push方法是队头加入，然后pop方法是取队头，跟poll有些相似，但是pop自带抛出异常(先进后出)
+
+PriorityQueue优先队列，小数在前原则，只有用poll方法出队的时候才会按顺序排
+PriorityQueue<int []>pq = new PriorityQueue<>((a,b))->Integer.compare(a[0],b[0]);
+最后对象括号可以通过装不同方法来构造这个优先队列的数字顺序，数组类型也是要一个一个new，sort方法也是后面括号放排序选择器来改变
+比如写list.sort((a,b)->Integer.compare(a,b))升序，改变ab位置是降序
+
+int[] []nums={{},{},{}}
+二维数组排序写法
+Arrays.sort(nums,(a,b)->{if(a[]!=b[0]{return Integer.compare(a[0],b[b])}return Integer.compare(a[1],b[1]);)};)
+                                      |等价写法
+                                      V
+Array.sort(nums,Comparator.comparingInt(arr->arr[0]).theComparingInt(arr->arr[1]));
+
+对象排序
+Student[] student={new Student("Alice",90)};对象数组依旧一个一个new
+
+StringBuilder的append方法拼接比String的拼接空字符操作效率更高，因为会不断加入新字符
+
 
