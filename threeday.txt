@@ -14,3 +14,89 @@ int mid = left + (right - left) / 2;
 防止溢出的比较器写法
 Arrays.sort(arr, Integer::compare);
 而不是Arrays.sort(arr, (a, b) -> a - b);
+
+取模运算
+int r =a%m;
+判断奇偶；
+判断整除；
+循环下标；int next = (i + 1) % n; 0 → 1 → 2 → 3 → 4 → 0
+结果过大时保留余数；
+时间和星期问题。
+
+模运算公式\[
+(a+b)mod m =((amodm)+(bmodm))modm乘法类似
+long MOD = 1000000007L;
+long sum = (a % MOD + b % MOD) % MOD;
+long product = (a % MOD) * (b % MOD) % MOD;
+
+负数取模
+System.out.println(-7 % 5); // -2
+int x = -7;
+int m = 5;
+
+int result = ((x % m) + m) % m;
+System.out.println(result); // 3这是为了求负数的非负余数
+
+输出优化
+StringBuilder answer = new StringBuilder();=
+for (int i = 1; i <= 100000; i++) {
+    answer.append(i).append('\n');------->answer.append(System.lineSeparator());//比这个代码更加简洁好用
+}
+System.out.print(answer);
+
+
+时间复杂度与空间复杂度
+看这个循环的执行次数，有时候使用积分算出来的
+for (int i = 0; i < n; i++) {
+    // O(1)
+}//O(n)
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+        // O(1)
+    }
+}//O(n*n)
+for (int x = n; x > 0; x /= 2) {
+    // O(1)
+}O(logn)
+
+一维数组的空间复杂度是n，二维的话n*n
+
+
+枚举
+1. 单变量枚举
+求1～n中能同时被3和5整除的数：
+for (int x = 1; x <= n; x++) {
+    if (x % 3 == 0 && x % 5 == 0) {
+        System.out.println(x);
+    }
+}
+
+2. 双变量枚举
+找出所有满足a + b = n的正整数：                               
+for (int a = 1; a < n; a++) {
+    for (int b = 1; b < n; b++) {
+        if (a + b == n) {                   -----------优化----------->for (int a = 1; a < n; a++) {
+      System.out.println(a + " " + b);                               int b = n - a;
+  }                                                                    if (b > 0) {
+  }                                                            System.out.println(a + " " + b);
+   }                                                            }
+                                                                    }        
+         
+枚举优化要点常见方法包括：
+- 缩小枚举范围；
+- 提前结束；
+- 排除不可能情况；
+- 通过公式减少变量；
+- 排序后利用单调性；
+- 预处理重复使用的信息。
+例如：
+for (int i = 0; i < n; i++) {
+    if (nums[i] > target) {
+        break;
+    }
+}
+
+
+
+
+
