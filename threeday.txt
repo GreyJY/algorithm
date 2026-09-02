@@ -1,1 +1,16 @@
+long转换int
+long result = (long) a * b;或者long result = 1L * a * b;
 
+溢出常见位置
+long sum = 0;
+
+for (int x : nums) {
+    sum += x;
+}
+long product = 1L * a * b;
+
+防止溢出的二分写法
+int mid = left + (right - left) / 2;
+防止溢出的比较器写法
+Arrays.sort(arr, Integer::compare);
+而不是Arrays.sort(arr, (a, b) -> a - b);
