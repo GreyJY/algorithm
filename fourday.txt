@@ -1,1 +1,126 @@
+算法模拟思想
+按照题目描述，把事情一步一步地在程序中重现
 
+做模拟题时建议：
+1. 找出需要记录的状态；
+2. 明确每一步如何变化；
+3. 确定循环结束条件；
+4. 按照题目规定的顺序更新；
+5. 检查边界情况。
+
+比如拿机器人移动来说，机器人初始位置为(0,0)
+U D L R 分别来代表向上向下向左还有向右
+
+int x = 0;
+int y = 0;
+
+for (char command : commands.toCharArray()) {
+    switch (command) {
+        case 'U':
+            y++;
+            break;
+        case 'D':
+            y--;
+            break;
+        case 'L':
+            x--;
+            break;
+        case 'R':
+            x++;
+            break;}
+}
+System.out.println(x + " " + y);这里模拟的是当前位置(x,y);
+
+int[] dx = {-1, 1, 0, 0};
+int[] dy = {0, 0, -1, 1};
+        (1,2)
+          ↑
+          上
+左(2,1) ← (2,2) → (2,3)右
+          ↓
+          下
+        (3,2)
+for (int i = 0; i < 4; i++) {
+    int newX = x + dx[i];
+    int newY = y + dy[i];
+}
+本质是把dfs(x - 1, y); // 上
+dfs(x + 1, y); // 下
+dfs(x, y - 1); // 左
+dfs(x, y + 1); // 右写成这个形式
+
+
+岛屿数量题
+1 1 0 0
+0 1 0 1
+0 0 0 1
+1 0 0 0
+1表示陆地，0表示海水，上下左右相连的 1 算同一个岛屿
+//实现代码
+public class Main {
+
+    static int[][] grid = {
+            {1, 1, 0, 0},
+            {0, 1, 0, 1},
+            {0, 0, 0, 1},
+            {1, 0, 0, 0}
+    };
+
+    //             上   下   左   右
+    static int[] dx = {-1, 1, 0, 0};
+    static int[] dy = {0, 0, -1, 1};
+
+    public static void main(String[] args) {
+
+        int count = 0;
+
+        for (int x = 0; x < grid.length; x++) {
+            for (int y = 0; y < grid[0].length; y++) {
+
+                // 发现一块新的陆地
+                if (grid[x][y] == 1) {
+                    count++;
+
+                    // 把这个岛全部找出来
+                    dfs(x, y);
+                }
+            }
+        }
+
+        System.out.println("岛屿数量：" + count);
+    }
+
+    static void dfs(int x, int y) {
+
+        // 标记这个位置已经走过
+        grid[x][y] = 0;
+
+        // 看上下左右
+        for (int i = 0; i < 4; i++) {
+
+            int newX = x + dx[i];
+            int newY = y + dy[i];
+
+            // 判断有没有越界
+            if (newX >= 0 && newX < grid.length
+                    && newY >= 0 && newY < grid[0].length
+                    && grid[newX][newY] == 1) {
+
+                dfs(newX, newY);
+            }
+        }
+    }
+}
+模拟题易错点
+- 更新顺序错误；
+- 忘记清空某些状态；
+- 下标越界；
+- 最后一步没有处理；
+- 同一轮应该同时更新，却写成依次更新；
+- 题目从1开始编号，数组从0开始编号。
+
+int nextA = ...;
+int nextB = ...;
+
+a = nextA;
+b = nextB;
