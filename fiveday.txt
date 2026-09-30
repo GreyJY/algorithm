@@ -19,3 +19,17 @@ return Integer.compare(a[1],b[1]);});
 - 按多个条件排列对象。
 
 进制转换思想
+10进制转换其他进制
+static String toBase(long number,int base){
+if(number==0){
+return"0";
+}
+String digits="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+StringBuilder result = new StringBuilder();
+while(number>0){
+int remainder=(int)(number%base);
+result.append(digits.charAt(remainder));
+number/=base;
+}
+return result.reverse().toString();
+}
