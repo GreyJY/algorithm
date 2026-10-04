@@ -39,3 +39,17 @@ current =next;
 }
 return current;
 }
+
+带取模的递推
+static long fibonacciMod(int n,long mod){
+if(n<=2)return 1%mod;
+
+long previous=1;
+long current =1;
+for(int i=3;i<=n;i++){
+long next =(previous+current)%mod;
+previous =current;
+current =next;
+}
+return current;
+}
