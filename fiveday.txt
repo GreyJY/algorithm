@@ -33,3 +33,21 @@ number/=base;
 }
 return result.reverse().toString();
 }
+
+其他进制转换为十进制
+static long fromBase(String value,int base){
+long result =0;
+for(int i=0;i<value.length();i++){
+char c = value.charAt(i);
+int digit;
+if(c>='0'&&c<='9'){
+digit=c-'0';
+}else{digit =c-'A'+10;}
+if(digit>=base){
+throw new ILLegalArgumentException("数字不属于该进制")；
+}
+result = result*base+digit;
+}
+
+return result;
+}
