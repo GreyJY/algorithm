@@ -51,3 +51,50 @@ result = result*base+digit;
 
 return result;
 }
+
+当然可以用Java自带的方法
+int x =Integer。parseInt("1101",2);-->x=13-->前面表示二进制数字，后面表示进制数
+Integer.toString(13,2);-->前面表十进制数字，后面表示想要转换的进制
+
+日期问题
+判断闰年
+static boolean isLeapYear(int year){
+return year%400==0||(year%4==0&&year%100!=0);
+}
+static int dayOfMoth(int year,int month){
+int[]days={
+0,31,28,31,30,31,30,31,31,30,31,30,31};
+if(month==2&&isLeapYear(year)){
+return 29;
+}
+return days[month];
+}
+日期第二天
+static int[] nextDay(int year, int month, int day) {
+    day++;
+    if (day > daysOfMonth(year, month)) {
+        day = 1;
+        month++;
+        if (month > 12) {
+            month = 1;
+            year++;
+        }
+    }
+    return new int[]{year, month, day};
+}
+
+判断某日期是当年的第几天
+static int dayOfYear(int year,int month,int day){
+int result=day;
+for(int m=1;m<month;m++){
+result+=dayOfMonth(year,m);
+}
+return result;
+}
+java日期类
+import java.time.*;
+ LocalDate start =LocalData,of(2024,1,1);
+LocalDate end =LocalDate.of(2024,3,1);
+long days =ChronoUnit.DAYS.between(start,end);
+
+
